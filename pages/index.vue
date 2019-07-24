@@ -1,65 +1,61 @@
 <template>
   <section class="container">
-    <div>
-      <app-logo/>
-      <h1 class="title">
-        movie-finder
-      </h1>
-      <h2 class="subtitle">
-        search engine for movies
-      </h2>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          class="button--green">Documentation</a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          class="button--grey">GitHub</a>
+    <div class="row justify-content-center">
+      <div class="col-sm-12 col-md-8 col-lg-6">
+        <h1 class="text-center">Movie Finder</h1>
+        <h4 class="text-center text-muted">Search engine for movies</h4>
+        <div class="container search-form">
+          <div class="row justify-content-center">
+            <div class="col-sm-12">
+              <input
+                v-model="request"
+                class="form-control form-control-lg"
+                type="text"
+                placeholder="Enter movie title"
+              >
+            </div>
+            <div class="col-sm-12 mt-2 text-center">
+              <button
+                @click="getMovies"
+                :disabled="!getUserRequest"
+                type="button"
+                class="btn btn-primary btn-lg"
+              >Find</button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 </template>
 
 <script>
-import AppLogo from '~/components/AppLogo.vue'
-
 export default {
-  components: {
-    AppLogo
+  data () {
+    return {
+      request: ''
+    }
+  },
+  computed: {
+    getUserRequest () {
+      return this.request.trim()
+    }
+  },
+  methods: {
+    goToResults () {
+      this.$router.push({ path: '/result' })
+    },
+    getMovies () {
+      if (!!this.getUserRequest) {
+        localStorage.setItem('request', this.getUserRequest)
+        this.goToResults()
+      }
+    }
   }
 }
 </script>
 
 <style>
-.container {
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
 
-.title {
-  font-family: "Quicksand", "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; /* 1 */
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
-}
-
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
-}
 </style>
 
