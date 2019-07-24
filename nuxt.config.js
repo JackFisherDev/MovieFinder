@@ -14,7 +14,8 @@ module.exports = {
     ]
   },
   css: [
-    './node_modules/bootstrap/dist/css/bootstrap.min.css'
+    './node_modules/bootstrap/dist/css/bootstrap.min.css',
+    './assets/css/main.css'
   ],
   env: {
     publicAPI: process.env.PUBLIC_API,

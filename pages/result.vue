@@ -2,7 +2,7 @@
   <section class="container">
     <div class="row mt-3">
       <div class="col-sm-3 align-items-center">
-        <a href="/" class="btn btn-primary">Back to Search</a>
+        <button @click="goToSearch" class="btn btn-primary">Back to Search</button>
       </div>
       <div class="col-sm-9">
         <h3 v-if="isCarouselVisible || gotError" class="tape-heading text-center">You'd searched <code>{{ getUserRequest }}</code></h3>
@@ -93,6 +93,9 @@ export default {
         
         if (index === this.movies.length -1) this.isCarouselVisible = true
       })
+    },
+    goToSearch () {
+      this.$router.push({ path: '/' })
     }
   },
   created () {
