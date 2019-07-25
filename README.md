@@ -1,4 +1,4 @@
-# movie-finder
+# MovieFinder
 
 > search engine for movies
 
