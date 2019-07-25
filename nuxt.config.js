@@ -17,10 +17,6 @@ module.exports = {
     './node_modules/bootstrap/dist/css/bootstrap.min.css',
     './assets/css/main.css'
   ],
-  env: {
-    publicAPI: process.env.PUBLIC_API,
-    APIKey: process.env.API_KEY
-  },
   /*
   ** Customize the progress bar color
   */
